@@ -1,0 +1,34 @@
+#include "ros/ros.h"
+#include "sensor_msgs/LaserScan.h"
+
+class Stopper{
+
+public:
+
+    const static double FORWARD_SPEED = 0.5;
+    const static double MIN_SCAN_ANGEL = -30/180*M_PI;
+    const static double MAX_SCAN_ANGEL = +30/180*M_PI;
+    const static float MIN_DIST_FROM_OBSTACLE = 0.5;
+
+    Stopper();
+    void startMoving();
+
+
+provate:
+
+    ros::NodeHandle node;
+    ros::Publisher command_pub;
+    ros::Subscriber laser_sub;
+    bool keep_moving;
+    void moveForward();
+    void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan);
+
+
+}
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+
+  <arg name="no_static_map" default="false"/>
+
+  <arg name="base_global_planner" default="navfn/NavfnROS"/> 
+  <!--<arg name="base_global_planner" default="carrot_planner/CarrotPlanner"/>-->
+
+  <arg name="base_local_planner" default="base_local_planner/TrajectoryPlannerROS"/>
+
+  <!--<arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>-->
+
+  <!--<arg name="base_local_planner" default="eband_local_planner/EBandPlannerROS"/>-->
+
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="/home/powerbot67/navigation_powerbot/src/powerbot_2dnav/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="/home/powerbot67/navigation_powerbot/src/powerbot_2dnav/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+    <rosparam file="/home/powerbot67/navigation_powerbot/src/powerbot_2dnav/config/local_costmap_params.yaml" command="load" />
+
+    <rosparam file="/home/powerbot67/navigation_powerbot/src/powerbot_2dnav/config/global_costmap_params.yaml" command="load" />
+
+    <rosparam file="/home/powerbot67/navigation_powerbot/src/powerbot_2dnav/config/base_local_planner_params.yaml" command="load" />
+
+    <param name="base_global_planner" value="$(arg base_global_planner)"/>
+    <param name="base_local_planner" value="$(arg base_local_planner)"/>  
+    <param name="recovery_behavior_enabled" value="false"/> 
+    <param name="recovery_behaviour_enabled" value="false"/> 
+    <param name="clearing_rotation_allowed" value="false"/>
+    <param name="planner_frequency" value="40.0"/> 
+
+    <!--<param name="controller_frequency" value="10.0"/> --> 
+    <!--<param name="planner_patience" value="40.0"/> -->
+    <!--<param name="controller_patience" value="40.0"/> -->
+
+    <!--<param name="oscillation_timeout" value="40"/> -->
+
+    <!-- Remap into namespace for cmd_vel_mux switching-->
+    <remap from="cmd_vel" to="/RosAria/cmd_vel" />
+  </node>
+</launch>

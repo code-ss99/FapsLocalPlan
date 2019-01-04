@@ -1,0 +1,7 @@
+<library path="lib/libfaps_local_planner">
+	<class name ="faps_local_planner/FapsPlannerROS" type ="faps_local_planner::FapsPlannerROS" base_class_type= "nav_core::BaseLocalPlanner">
+		<description>
+			Simple Plugin for BaseLocalPlanner that allows you to follow the global path as it is.
+		</description>
+	</class>
+</library>

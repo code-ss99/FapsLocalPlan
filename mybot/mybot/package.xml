@@ -1,0 +1,25 @@
+<package>
+  <name>mybot</name>
+  <version>0.1.0</version>
+  <description>myrobot</description>
+  <maintainer email="zeroes0049@gmail.com">Patrick Goebel</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website"></url>
+
+  <url type="bugtracker"></url>
+
+  <author email="zeroes0049@gmail.com"></author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>mybot_control</run_depend>
+  <run_depend>mybot_description</run_depend>
+  <run_depend>mybot_gazebo</run_depend>
+  <run_depend>mybot_navigation</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>
